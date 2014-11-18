@@ -1,8 +1,12 @@
-
 class String
   def align position, length
-    self.__send__ position, length
+    case position.to_s
+    when 'left'
+      ljust length
+    when 'right'
+      rjust length
+    else
+      send position, length
+    end
   end
-  alias_method :left, :ljust
-  alias_method :right, :rjust
 end
